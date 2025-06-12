@@ -6,4 +6,5 @@ import com.suyash.invoicegeneratorapi.entity.Invoice;
 
 public interface InvoiceRepository extends MongoRepository<Invoice, String> {
 
+    
 }
