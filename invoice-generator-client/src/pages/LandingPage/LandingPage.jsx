@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import './LandingPage.css';
 import Features from '../../components/Features';
+import Logo from '../../components/Logo';
 
 const LandingPage = () => {
   return (
@@ -149,6 +150,27 @@ const LandingPage = () => {
             <p className="text-muted mt-2">(This will lead to the invoice generation interface)</p>
           </div>
         </section>
+
+        <>
+          <footer className="py-5 bg-dark text-white-50">
+            <div className="container text-center">
+              <Logo />
+              <p className="text-white fw-bold mt-2">Quick Invoice</p>
+              <p className="mb-0">
+                &copy; {new Date().getFullYear()} QuickInvoice. All Rights Reserved.
+              </p>
+              <p className="mb-0 small">
+                Crafted with <i className="bi bi-heart-fill text-danger"></i> for freelancers
+              </p>
+              <p className="mt-2">
+                {/* Placeholder social media links */}
+                <a href="#" className="text-white-50 me-2"><i className="bi bi-twitter-x"></i></a>
+                <a href="#" className="text-white-50 me-2"><i className="bi bi-facebook"></i></a>
+                <a href="#" className="text-white-50 me-2"><i className="bi bi-linkedin"></i></a>
+              </p>
+            </div>
+          </footer>
+        </>
      </>
   )
 }
