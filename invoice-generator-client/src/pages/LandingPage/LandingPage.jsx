@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import './LandingPage.css';
 import Features from '../../components/Features';
 import Logo from '../../components/Logo';
+import { Twitter, Facebook, Linkedin, Heart } from 'lucide-react';
 
 const LandingPage = () => {
   return (
@@ -164,9 +165,9 @@ const LandingPage = () => {
               </p>
               <p className="mt-2">
                 {/* Placeholder social media links */}
-                <a href="#" className="text-white-50 me-2"><i className="bi bi-twitter-x"></i></a>
-                <a href="#" className="text-white-50 me-2"><i className="bi bi-facebook"></i></a>
-                <a href="#" className="text-white-50 me-2"><i className="bi bi-linkedin"></i></a>
+                <a href="#" className="text-white-50 me-2"><Twitter /></a>
+                <a href="#" className="text-white-50 me-2"><Facebook /></a>
+                <a href="#" className="text-white-50 me-2"><Linkedin /></a>
               </p>
             </div>
           </footer>
