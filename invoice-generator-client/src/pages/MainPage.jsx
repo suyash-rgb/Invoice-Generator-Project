@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { AppContext } from "../context/AppContext.jsx";
+import InvoiceForm from "../components/InvoiceForm.jsx";
 
 const MainPage = () => {
 
@@ -22,7 +23,7 @@ const MainPage = () => {
   }
 
   return (
-    <div className="container-fluid bg-light min-vh-100 py-4">
+    <div className="mainpage container-fluid bg-light min-vh-100 py-4">
       <div className="container">
 
         {/* Title bar */}
@@ -58,7 +59,7 @@ const MainPage = () => {
           {/* Invoice Form */}
           <div className="col-12 col-lg-6 d-flex">
             <div className="bg-white border rounded shadow-sm p-4 w-100">
-              invoice form
+              <InvoiceForm />
             </div>
 
           </div>
