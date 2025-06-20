@@ -24,3 +24,23 @@
 .invoiceform select:focus{
   box-shadow: none !important
 }
+
+/* PreviewPage container */
+.previewpage {
+  background-color: #f0f2f5; /* soft gray backdrop */
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Invoice preview display area */
+.invoice-preview {
+  width: 794px;               /* A4 width */
+  min-height: 1123px;         /* A4 height */
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  padding: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+}

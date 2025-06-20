@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { AppContext } from "../context/AppContext.jsx";
 import InvoiceForm from "../components/InvoiceForm.jsx";
@@ -8,6 +10,8 @@ import toast from "react-hot-toast";
 const MainPage = () => {
 
   const [isEditingTitle, setIsEditingTitle] = useState(false);
+
+  const navigate  = useNavigate();
 
   const {
     invoiceTitle, setInvoiceTitle, 
@@ -27,6 +31,8 @@ const MainPage = () => {
      }
      setSelectedTemplate(templateId);
      console.log(templateId);
+
+     navigate('/preview');
      
   }
 
