@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { AppContext } from "../context/AppContext.jsx";
 import InvoiceForm from "../components/InvoiceForm.jsx";
+import TemplateGrid from "../components/TemplateGrid.jsx";
 
 const MainPage = () => {
 
@@ -67,7 +68,7 @@ const MainPage = () => {
           {/* Template Grid */}
           <div className="col-12 col-lg-6 d-flex">
             <div className="bg-white border rounded shadow-sm p-4 w-100">
-              template grid
+              <TemplateGrid />
             </div>
           </div>
         </div>
