@@ -8,7 +8,7 @@ const Template1 = ({data}) => {
         
         {/*Header Section */}
         <div className="row mb-4">
-            <div className="col-md-6 mb-3 mb-md-0">
+            <div className="col-md-6 mb-3 mb-md-0 text-start">
                 {data.companyLogo && (
                     <div className="mb-2">
                         <img src={data.companyLogo} alt="Company Logo" width={98} />
@@ -45,7 +45,7 @@ const Template1 = ({data}) => {
         <div className="row g-3 mb-4">
             {data.shippingName && data.shippingPhone && data.shippingAddress && (
                 <div className="col-md-6">
-                    <div className="p-3 rounded h-100 billing-box">
+                    <div className="p-3 rounded h-100 billing-box text-start">
                         <h3 className="mb-2 billing-title">
                             Shipped To
                         </h3>
@@ -59,7 +59,7 @@ const Template1 = ({data}) => {
             )}
 
             <div className="col-md-6">
-                <div className="p-3 rounded h-100 billing-box">
+                <div className="p-3 rounded h-100 billing-box text-start">
                     <h3 className="mb-2 billing-title">Billed To</h3>
                     <p className="mb-1">
                         <strong>{data.billingName}</strong>
@@ -124,7 +124,7 @@ const Template1 = ({data}) => {
         {/* Bank Account Section */}
         {(data.accountName || data.accountNumber || data.accountIfscCode) && (
           <div className="row mt-4">
-            <div className="col-md-8">
+            <div className="col-md-8 text-start">
               <h3 className="mb-2 billing-title">Bank Account Details</h3>
               {data.accountName && (
                 <p className="mb-1">
@@ -148,7 +148,7 @@ const Template1 = ({data}) => {
         {/* Notes Section */}
         {data.notes && (
           <div className="row mt-4">
-            <div className="col-md-8">
+            <div className="col-md-8 text-start">
              <h3 className="mb-2 billing-title">Remarks</h3>
              <p className="mb-0">{data.notes}</p>
             </div>
