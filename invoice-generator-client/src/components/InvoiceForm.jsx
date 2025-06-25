@@ -46,16 +46,25 @@ const InvoiceForm = () => {
   };
 
   const handleItemChange = (index, field, value) => {
-    const items = [...invoiceData.items];
-    items[index]=value;
-    if(field === 'qty' || field === 'amount') {
-      items[index].total = (items[index].qty || 0) * (items[index].amount || 0);
-    }
-    setInvoiceData((prev) => ({
-      ...prev,
-      items: items,
-    }));
+  const items = [...invoiceData.items];
+  const updatedItem = {
+    ...items[index],
+    [field]: value,
+  };
+
+  if (field === 'qty' || field === 'amount') {
+    const qty = Number(updatedItem.qty || 0);
+    const amount = Number(updatedItem.amount || 0);
+    updatedItem.total = qty * amount;
   }
+
+  items[index] = updatedItem;
+
+  setInvoiceData((prev) => ({
+    ...prev,
+    items,
+  }));
+};
 
   const calculateTotals = () => {
     const subtotal = invoiceData.items.reduce((sum, item) => sum + (item.total) || 0, 0);
@@ -191,7 +200,7 @@ const InvoiceForm = () => {
             <div className="d-flex justify-content-between align-items-center mb-2">
                 <h5> Ship To</h5>
                 <div className="form-check">
-                <input type="checkbox" className="form-check-input" id="sameAsBilling" onChange={{handleSameAsBilling}}/>
+                <input type="checkbox" className="form-check-input" id="sameAsBilling" onChange={handleSameAsBilling}/>
                 <label htmlFor="sameAsBilling" className="form-check-label">
                     Same as Billing
                 </label>
@@ -272,7 +281,7 @@ const InvoiceForm = () => {
                             className="form-control" 
                             placeholder="Item Name"
                             value={item.name}
-                            onChange={(e)=> handleItemChange("index", "name", e.target.value)}
+                            onChange={(e)=> handleItemChange(index, "name", e.target.value)}
                       />
                    </div>
                    <div className="col-md-3">
@@ -280,7 +289,7 @@ const InvoiceForm = () => {
                            className="form-control" 
                            placeholder="qty"
                            value={item.qty}
-                           onChange={(e)=> handleItemChange("index", "qty", e.target.value)}
+                           onChange={(e)=> handleItemChange(index, "qty", e.target.value)}
                       />
                    </div>
                    <div className="col-md-3">
@@ -288,7 +297,7 @@ const InvoiceForm = () => {
                           className="form-control" 
                           placeholder="Amount"
                           value={item.amount}
-                          onChange={(e)=> handleItemChange("index", "amount", e.target.value)} 
+                          onChange={(e)=> handleItemChange(index, "amount", e.target.value)} 
                       />
                    </div>
                    <div className="col-md-3">
@@ -296,7 +305,7 @@ const InvoiceForm = () => {
                            className="form-control" 
                            placeholder="Total"
                            value={item.total}
-                           onChange={(e)=> handleItemChange("index", "total", e.target.value)} 
+                           onChange={(e)=> handleItemChange(index, "total", e.target.value)} 
                            disabled
                       />
                    </div>
@@ -306,11 +315,11 @@ const InvoiceForm = () => {
                   <textarea className="form-control" 
                             placeholder="Description"
                             value={item.description}
-                            onChange={(e)=> handleItemChange("index", "description", e.target.value)} 
+                            onChange={(e)=> handleItemChange(index, "description", e.target.value)} 
                   >
                   </textarea>
                   {invoiceData.items.length >1 && (
-                    <button className="btn btn-outline-danger" type="button" onClick={deleteItem(index)} >
+                    <button className="btn btn-outline-danger" type="button" onClick={() => deleteItem(index)} >
                      <Trash2 size={18} />
                     </button>
                   )}
@@ -378,7 +387,7 @@ const InvoiceForm = () => {
                </div>
                <div className="d-flex justify-content-between">
                 <span>Tax Amount</span>
-                <span>{taxAmount.toFixed(2)}</span>
+                <span>{Number(taxAmount).toFixed(2)}</span>
                </div>
                <div className="d-flex justify-content-between fw-bold mt-2">
                 <span>Grand total</span>
@@ -399,7 +408,7 @@ const InvoiceForm = () => {
                           onChange={(e) =>  
                             setInvoiceData((prev) => ({
                                 ...prev,
-                                tax: e.target.value
+                                notes: e.target.value
                             }))
                           }
                 >
