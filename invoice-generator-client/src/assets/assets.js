@@ -1,17 +1,51 @@
 //import template1 from './template1.png'
 import logo from './logo.png'
 import upload_area from './upload_area.jpg'
+import template1 from './template1.png'
+import template2 from './template2.png'
+import template3 from './template3.png'
+import template4 from './template4.png'
+import template5 from './template5.png'
 
 export const assets = {
-   //template1,
+   template1,
+   template2,
+   template3,
+   template4,
+   template5,
    logo,
    upload_area
 }
 
 export const templates =[
-   {id: "template1", label: "Template 1", image: assets.template1},
-   {id: "template2", label: "Template 2", image: assets.template2},
-   {id: "template3", label: "Template 3", image: assets.template3},
-   {id: "template4", label: "Template 4", image: assets.template4},
-   {id: "template5", label: "Template 5", image: assets.template5}  
+   {
+    id: 'template1',
+    label: 'Warm Orange',
+    image: template1,
+    hoverColor: '#ea580c',
+  },
+  {
+    id: 'template2',
+    label: 'Ocean Blue',
+    image: template2,
+    hoverColor: '#2563eb',
+  },
+  {
+    id: 'template3',
+    label: 'Forest Green',
+    image: template3,
+    hoverColor: '#15803d',
+  },
+  {
+    id: 'template4',
+    label: 'Sunset Coral',
+    image: template4,
+    hoverColor: '#f97316', // Vibrant coral-orange
+  },
+  {
+    id: 'template5',
+    label: 'Midnight Noir',
+    image: template5,
+    hoverColor: '#facc15', // Soft golden yellow on deep gray
+  },  
 ];
