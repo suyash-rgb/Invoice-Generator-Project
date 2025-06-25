@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { AppContext } from "../context/AppContext.jsx";
 import InvoiceForm from "../components/InvoiceForm.jsx";
