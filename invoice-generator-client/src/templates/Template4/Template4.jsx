@@ -4,6 +4,8 @@ import React from 'react';
 const Template4 = ({ data }) => {
   return (
     <div className="template4 border rounded mx-auto my-4 px-sm-4 py-3 w-100">
+      
+      {/*Header Section */}
       <div className="row mb-4">
         <div className="col-md-6 mb-3 mb-md-0 text-start">
           {data.companyLogo && (

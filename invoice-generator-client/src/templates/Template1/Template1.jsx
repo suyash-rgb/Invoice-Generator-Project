@@ -143,7 +143,7 @@ const Template1 = ({data}) => {
               )}
            </div>
           </div>
-        )}
+        )} 
 
         {/* Notes Section */}
         {data.notes && (

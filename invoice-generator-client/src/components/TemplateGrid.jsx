@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { templates } from '../assets/assets';
+import './TemplateGrid.css';
 
 const TemplateGrid = ({ onTemplateClick }) => {
   const [hoveredId, setHoveredId] = useState(null);

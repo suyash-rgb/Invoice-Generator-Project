@@ -26,9 +26,12 @@ const InvoicePreview = forwardRef(({ invoiceData, template }, ref) => {
     }
   };
 
+  // const SelectedTemplate = templateComponents[template] || templateComponents["template1"]]
+
   return (
     <div ref={ref} className="invoice-preview container py-2 px-2 overflow-x-auto">
       {renderTemplate()}
+      {/* <SelectedTemplate data = {formattedData} /> */}
     </div>
   );
 });
