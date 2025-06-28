@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -37,6 +39,7 @@ public class Invoice {
     @LastModifiedBy
     private Instant lastUpdatedAt;
 
+    @JsonProperty("thumbnailUrl")
     private String thumbnail;
 
     private String template;
