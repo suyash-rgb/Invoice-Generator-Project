@@ -10,6 +10,7 @@ import com.suyash.invoicegeneratorapi.service.InvoiceService;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 @RequiredArgsConstructor
 @RequestMapping("/api/invoices")
 @CrossOrigin("*")
+@Slf4j
 public class InvoiceController {
 
     private final InvoiceService invoiceService;
@@ -53,12 +55,13 @@ public class InvoiceController {
 
     @PostMapping("/sendInvoice")  
     public ResponseEntity<?> sendInvoice( @RequestPart("file") MultipartFile file, 
-                                          @RequestPart("email") String customerEmail){
+                                          @RequestParam("email") String customerEmail){
         
         try{
             emailService.sendInvoiceEmail(customerEmail, file);
-            return ResponseEntity.ok().body("Invoice sent successfully");
+            return ResponseEntity.ok("Invoice sent successfully");
         } catch(Exception e){
+            log.error("Failed to send invoice", e); // optional 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send invoice");
         }
 

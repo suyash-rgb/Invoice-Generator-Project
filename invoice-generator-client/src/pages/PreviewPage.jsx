@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { templates } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
 import InvoicePreview from '../components/InvoicePreview';
-import { deleteInvoice, saveInvoice } from '../service/InvoiceService';
+import { deleteInvoice, saveInvoice, sendInvoice } from '../service/InvoiceService';
 import { Loader2 } from 'lucide-react';
 // import { baseUrl } from '/src/context/AppContext.jsx';
 import { toast } from 'react-hot-toast';
@@ -17,6 +17,10 @@ const PreviewPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [downloading, setDownloading] = useState(false);
+  const [showModal, setShowModal ] = useState(false);
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [emailing, setEmailing] = useState(false);
+
 
   const handleSaveAndExit = async () => {
      try{
@@ -83,6 +87,32 @@ const PreviewPage = () => {
     }
   }
 
+  const handleSendEmail = async() => {
+    if(!previewRef.current || !customerEmail) {
+       toast.error("Please enter a valid email and try again");
+    }
+    try{
+        setEmailing(true);
+        const pdfBlob = await generatePdfFromElement(previewRef.current, `invoice${Date.now()}.pdf`, true);
+        const formData = new FormData();
+        formData.append("file", pdfBlob, `invoice${Date.now()}.pdf`);
+        formData.append("email", customerEmail);
+
+        const response = await sendInvoice(baseUrl, formData);
+        if(response.status === 200){
+          toast.success("Email sent successfully");
+          setShowModal(false);
+          setCustomerEmail("");
+        } else {
+          toast.error("Failed to send email");
+        }
+    } catch(error){
+        toast.error("Failed to send email", error.message);
+    } finally {
+      setEmailing(false);
+    }
+  }
+
   return (
     <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
       
@@ -113,7 +143,7 @@ const PreviewPage = () => {
             </button>
             {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
             <button className="btn btn-secondary">Back to Dashboard</button>
-            <button className="btn btn-info">Send Email</button>
+            <button className="btn btn-info" onClick={()=> setShowModal(true)}>Send Email</button>
             <button className="btn btn-success d-flex align-items-center jutify-content-center"
                     disabled={loading}
                     onClick={handleDownlaodPdf}> {downloading && (
@@ -131,6 +161,42 @@ const PreviewPage = () => {
 
 
       </div>
+
+      {showModal && (
+        <div className="modal d-block" tabIndex="-1" role="dialog" style={{backgroundColor: "rgba(0,0,0,0.5)"}}>
+           <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Send Invoice</h5>
+                <button type="button" 
+                        className="btn-close" 
+                        onClick={() => setShowModal(false)}>
+                </button>
+              </div>
+              <div className="modal-body">
+                <input type="email" 
+                       className="form-control" 
+                       placeholder="Customer Email"
+                       onChange={(e) => setCustomerEmail(e.target.value)}
+                       value={customerEmail} />
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary" 
+                                      onClick={handleSendEmail} 
+                                      disabled ={emailing}>
+                                      {emailing ? "Sending..." : "Send"}
+                </button>
+                <button type="button" 
+                        className="btn btn-secondary" 
+                        onClick={()=> setShowModal(false)}>
+                        Cancel
+                </button>
+              </div>
+            </div>
+           </div>
+        </div>
+      )}  
+
     </div>
   )
 }

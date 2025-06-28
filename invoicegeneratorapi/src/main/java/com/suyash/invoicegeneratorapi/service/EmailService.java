@@ -12,10 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EmailService {
 
     private final JavaMailSender mailSender;
@@ -31,8 +33,8 @@ public class EmailService {
         helper.setTo(toEmail);
         helper.setSubject("Your Invoice");
         helper.setText("Dear Customer, \n\nPlease find attached - your invoice.\n\nThank You!");
-        
-        helper.addAttachment(file.getOriginalFilename(), new ByteArrayResource(file.getBytes()));
+        String fileName = "invoice_"+System.currentTimeMillis()+".pdf";
+        helper.addAttachment(fileName, new ByteArrayResource(file.getBytes()));
 
         mailSender.send(message);
     }
