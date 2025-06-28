@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,7 +37,7 @@ public class Invoice {
     @CreatedDate
     private Instant createdAt;
 
-    @LastModifiedBy
+    @LastModifiedDate
     private Instant lastUpdatedAt;
 
     @JsonProperty("thumbnailUrl")

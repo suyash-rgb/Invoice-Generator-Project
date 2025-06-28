@@ -4,6 +4,7 @@ import Template2 from '../templates/Template2/Template2'; // import your other t
 import Template3 from '../templates/Template3/Template3';
 import Template4 from '../templates/Template4/Template4';
 import Template5 from '../templates/Template5/Template5';
+import Template6 from '../templates/Template6/Template6';
 import { formatInvoiceData } from '../util/formatInvoiceData';
 
 const InvoicePreview = forwardRef(({ invoiceData, template }, ref) => {
@@ -21,6 +22,8 @@ const InvoicePreview = forwardRef(({ invoiceData, template }, ref) => {
         return <Template4 data={formattedData} />;
       case 'template5':
         return <Template5 data={formattedData} />;
+      case 'template6':
+        return <Template6 data={formattedData} />;
       default:
         return <Template1 data={formattedData} />;
     }

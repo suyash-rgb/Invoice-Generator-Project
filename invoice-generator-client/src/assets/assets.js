@@ -6,6 +6,7 @@ import template2 from './template2.png'
 import template3 from './template3.png'
 import template4 from './template4.png'
 import template5 from './template5.png'
+import template6 from './template6.png'
 
 export const assets = {
    template1,
@@ -13,6 +14,7 @@ export const assets = {
    template3,
    template4,
    template5,
+   template6,
    logo,
    upload_area
 }
@@ -47,5 +49,11 @@ export const templates =[
     label: 'Midnight Noir',
     image: template5,
     hoverColor: '#facc15', // Soft golden yellow on deep gray
-  },  
+  },
+  {
+    id: 'template6',
+    label: 'Royal Lavender',
+    image: template6,
+    hoverColor: '#7c3aed', // Deep purple accent
+  }  
 ];

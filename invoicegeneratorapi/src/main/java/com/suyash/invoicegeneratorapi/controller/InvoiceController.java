@@ -34,7 +34,7 @@ public class InvoiceController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Invoice>> fetchInvoices(@RequestParam String param) {
+    public ResponseEntity<List<Invoice>> fetchInvoices() {
         return ResponseEntity.ok(invoiceService.fetchInvoices());
     }
 
