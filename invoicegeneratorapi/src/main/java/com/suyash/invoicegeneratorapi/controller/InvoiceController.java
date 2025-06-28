@@ -2,14 +2,19 @@ package com.suyash.invoicegeneratorapi.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.suyash.invoicegeneratorapi.entity.Invoice;
+import com.suyash.invoicegeneratorapi.service.EmailService;
 import com.suyash.invoicegeneratorapi.service.InvoiceService;
 
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,15 +23,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 
-@RestController
+@RestController 
 @RequiredArgsConstructor
 @RequestMapping("/api/invoices")
 @CrossOrigin("*")
 public class InvoiceController {
 
     private final InvoiceService invoiceService;
+    private final EmailService emailService;
 
     @PostMapping("")
     public ResponseEntity<Invoice> saveInvoice(@RequestBody Invoice invoice){
@@ -42,6 +49,20 @@ public class InvoiceController {
     public ResponseEntity<Void> removeInvoice(@PathVariable String id){
         invoiceService.removeInvoice(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/sendInvoice")  
+    public ResponseEntity<?> sendInvoice( @RequestPart("file") MultipartFile file, 
+                                          @RequestPart("email") String customerEmail){
+        
+        try{
+            emailService.sendInvoiceEmail(customerEmail, file);
+            return ResponseEntity.ok().body("Invoice sent successfully");
+        } catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send invoice");
+        }
+
+                                         
     }
     
 
