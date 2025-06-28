@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import {AppContext} from '../context/AppContext.jsx';
+import { useNavigate } from 'react-router-dom';
+import {AppContext, initialInvoiceData} from '../context/AppContext.jsx';
 import { toast } from 'react-hot-toast';
 import { getAllInvoices } from '../service/InvoiceService';
 import { Plus } from 'lucide-react';
@@ -8,7 +9,8 @@ import { formatDate } from '../util/formatInvoiceData.js';
 const Dashboard = () => {
 
   const [invoices, setInvoices] = useState([]);
-  const {baseUrl} = useContext(AppContext);
+  const {baseUrl, setInvoiceData, setSelectedTemplate, setInvoiceTitle} = useContext(AppContext);
+  const navigate =  useNavigate();
 
   useEffect(()=>{
     const fetchInvoices = async () => {
@@ -23,12 +25,29 @@ const Dashboard = () => {
     fetchInvoices();
   }, [baseUrl]);
 
+  const handleViewClick = (invoice) => {
+    setInvoiceData(invoice);
+    setSelectedTemplate(invoice.template || "template1");
+    setInvoiceTitle(invoice.title || "New Invoice");
+    navigate('/preview');
+  }
+
+  const handleCreateNew = () => {
+    //reset to initial stage from context
+    setInvoiceTitle("New Invoice");
+    setSelectedTemplate("template1");
+    setInvoiceData(initialInvoiceData);
+    navigate('/generate');
+  }
+
   return (
     <div className="container py-5">
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-1 row-cols-lg-5 g-4">
         {/* Create New Invoice card */}
         <div className="col">
-          <div className="card h-100 d-flex justify-content-center align-items-center border border-2 border-light shadow-sm cursor-pointer" style={{minHeight: '270px'}}>
+          <div className="card h-100 d-flex justify-content-center align-items-center border border-2 border-light shadow-sm cursor-pointer" 
+               style={{minHeight: '270px'}}
+               onClick={handleCreateNew}>
              <Plus size={48}/>
              <p className="mt-3 fw-medium">Create New Invoice</p>
          
@@ -38,7 +57,10 @@ const Dashboard = () => {
         {/* Render the existing invoices */}
         {invoices.map((invoice, idx) => (
           <div className="col" key={idx}>
-            <div className="card h-100 shadow-sm cursor-pointer" style={{minHeight: '270px'}}>
+            <div className="card h-100 shadow-sm cursor-pointer" 
+                 style={{minHeight: '270px'}}
+                 onClick={() => handleViewClick(invoice)}>
+
                {invoice.thumbnailUrl && (
                  <img src={invoice.thumbnailUrl} 
                       alt="Invoice thumbnail" 
@@ -50,7 +72,7 @@ const Dashboard = () => {
                <div className="card-body">
                    <h6 className="card-title mb-1"> </h6>
                    <small className="text-muted">
-                    Last Updated: {formatDate(invoice.lastUpdatedAt)}
+                    Last Updated: {formatDate(invoice.lastUpdatedAt )}
                    </small>
                </div>
             </div>

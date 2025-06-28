@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { templates } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
 import InvoicePreview from '../components/InvoicePreview';
-import { saveInvoice } from '../service/InvoiceService';
+import { deleteInvoice, saveInvoice } from '../service/InvoiceService';
 import { Loader2 } from 'lucide-react';
 // import { baseUrl } from '/src/context/AppContext.jsx';
 import { toast } from 'react-hot-toast';
@@ -53,6 +53,21 @@ const PreviewPage = () => {
      }
   }
 
+  const handleDelete = async () => {
+    
+    try{
+      const response = await deleteInvoice(baseUrl, invoiceData.id);
+      if(response.status === 204){
+        toast.success("Invoice deleted successfully");
+        navigate('/dashboard');
+      } else {
+        toast.error("Unable to delete invoice");
+      } 
+    } catch(error){
+        toast.error("Failed to delete invoice", error.message);
+    }
+  }
+
   return (
     <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
       
@@ -81,7 +96,7 @@ const PreviewPage = () => {
                       {loading && <Loader2 className="me-2 spin-animation" size={18}/>}
                       {loading ? "Saving..." : "Save and Exit" }
             </button>
-            <button className="btn btn-danger">Delete Invoice</button>
+            {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
             <button className="btn btn-secondary">Back to Dashboard</button>
             <button className="btn btn-info">Send Email</button>
             <button className="btn btn-success d-flex align-items-center jutify-content-centr">Download PDF</button>

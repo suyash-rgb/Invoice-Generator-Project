@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export const saveInvoice = (baseUrl, payload) => {
-   return axios.post(`${baseUrl}/invoices`, payload)
+   return axios.post(`${baseUrl}/invoices`, payload);
 }
 
 export const getAllInvoices = (baseUrl) => {
-   return axios.get(`${baseUrl}/invoices`)
+   return axios.get(`${baseUrl}/invoices`);
+}
+
+export const deleteInvoice = (baseUrl, id) => {
+   return axios.delete(`${baseUrl}/invoices/${id}`);
 }
