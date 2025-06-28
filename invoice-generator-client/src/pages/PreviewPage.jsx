@@ -9,12 +9,14 @@ import { Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import html2canvas from 'html2canvas'
 import { uploadInvoiceThumbnail } from '../service/cloudinaryService';
+import { generatePdfFromElement } from '../util/pdfUtils';
 
 const PreviewPage = () => {
   const previewRef = useRef();
   const {selectedTemplate, setSelectedTemplate, invoiceData, baseUrl} = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [downloading, setDownloading] = useState(false);
 
   const handleSaveAndExit = async () => {
      try{
@@ -68,6 +70,19 @@ const PreviewPage = () => {
     }
   }
 
+  const handleDownlaodPdf = async () => {
+    if(!previewRef.current) return;
+
+    try{
+      setDownloading(true);
+      await generatePdfFromElement(previewRef.current, `invoice${Date.now()}.pdf`)
+    } catch (error){
+      toast.error("Failed to generate invoice", error.message);
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   return (
     <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">
       
@@ -99,7 +114,12 @@ const PreviewPage = () => {
             {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
             <button className="btn btn-secondary">Back to Dashboard</button>
             <button className="btn btn-info">Send Email</button>
-            <button className="btn btn-success d-flex align-items-center jutify-content-centr">Download PDF</button>
+            <button className="btn btn-success d-flex align-items-center jutify-content-center"
+                    disabled={loading}
+                    onClick={handleDownlaodPdf}> {downloading && (
+                      <Loader2 className="me-2 spin-animation" size={18} />
+                    )}
+                    {downloading ? "Downloading..." : "Downlaod PDF"}</button>
          </div>
 
          {/* Display the invoice preview */}
