@@ -142,8 +142,9 @@ const PreviewPage = () => {
                       {loading ? "Saving..." : "Save and Exit" }
             </button>
             {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
-            <button className="btn btn-secondary">Back to Dashboard</button>
-            <button className="btn btn-info" onClick={()=> setShowModal(true)}>Send Email</button>
+            <button className="btn btn-secondary"onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
+            <button className="btn btn-info" 
+                    onClick={()=> setShowModal(true)}>Send Email</button>
             <button className="btn btn-success d-flex align-items-center jutify-content-center"
                     disabled={loading}
                     onClick={handleDownlaodPdf}> {downloading && (
