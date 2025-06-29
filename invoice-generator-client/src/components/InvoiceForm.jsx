@@ -159,7 +159,7 @@ const InvoiceForm = () => {
                         className="form-control" 
                         placeholder="Company address"
                         onChange={(e)=> handleChange("company", "address", e.target.value)}
-                        value={invoiceData.company.name} />
+                        value={invoiceData.company.address} />
                 </div> 
             </div>
         </div>

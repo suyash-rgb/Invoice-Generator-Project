@@ -1,71 +1,12 @@
-# QuickInvoice
+# React + Vite
 
-## Installation
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-To install and run the QuickInvoice application, follow these steps:
+Currently, two official plugins are available:
 
-1. Clone the repository:
-```
-git clone https://github.com/your-username/invoice-generator-client.git
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-2. Navigate to the project directory:
-```
-cd invoice-generator-client
-```
+## Expanding the ESLint configuration
 
-3. Install the dependencies:
-```
-npm install
-```
-
-4. Start the development server:
-```
-npm run dev
-```
-
-The application will be available at `http://localhost:5173`.
-
-## Usage
-
-QuickInvoice is an easy-to-use invoice generator that allows you to create professional-looking invoices in minutes. Here's how you can use the application:
-
-1. Enter your company details, such as name, address, and phone number.
-2. Fill in the client's billing and shipping information.
-3. Add the items you've provided, including the name, quantity, and amount.
-4. Select a pre-designed template that matches your brand.
-5. Review the invoice preview and make any necessary adjustments.
-6. Save the invoice, download it as a PDF, or send it directly to your client via email.
-
-## API
-
-The QuickInvoice application uses the following API endpoints:
-
-- `POST /api/invoices`: Save an invoice
-- `GET /api/invoices`: Fetch all invoices for the current user
-- `DELETE /api/invoices/{id}`: Delete an invoice
-- `POST /api/invoices/sendInvoice`: Send an invoice via email
-
-## Contributing
-
-If you'd like to contribute to the QuickInvoice project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your forked repository.
-5. Submit a pull request to the main repository.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Testing
-
-To run the tests for the QuickInvoice application, use the following command:
-
-```
-npm run test
-```
-
-This will execute the test suite and report the results.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

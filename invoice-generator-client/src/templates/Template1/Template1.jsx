@@ -6,40 +6,41 @@ const Template1 = ({data}) => {
   return (
     <div className="template1 border rounded mx-auto my-4 px-sm-4 py-3 w-100">
         
-        {/*Header Section */}
-        <div className="row mb-4">
-            <div className="col-md-6 mb-3 mb-md-0 text-start">
-                {data.companyLogo && (
-                    <div className="mb-2">
-                        <img src={data.companyLogo} alt="Company Logo" width={98} />
-                    </div>
-                )}
+        {/* Header Section */}
+<div className="row mb-4 align-items-start">
+  <h1 className="mb-3 invoice-title text-start">Invoice</h1>
+  {/* Left: Company Info */}
+  <div className="col-md-6 text-start">
+    
+  </div>
 
-                <h2 className="mb-1 company-title">
-                    {data.companyName}
-                </h2>
-                <p className="mb-1">{data.company}</p>
-                <p className="mb-0">Phone: {data.companyPhone}</p>
-            </div>
-            <div className="col-md-6 text-start text-md-end">
-                <h1 className="mb-2 invoice-title">Invoice</h1>
-                <div className="d-flex flex-column flex-md-row justify-content-md-end gap-2 gap-md-4">
-                    <div className="w-100 w-md-50 mb-3 mb-md-0">
-                        <p className="mb-1">
-                            <strong>Invoice#:</strong> {data.invoiceNumber}
-                        </p>
-                        <p className="mb-1">
-                            <strong>Invoice Date:</strong> {data.invoiceDate}
-                        </p>
-                        <p className="mb-1">
-                            <strong>Due Date:</strong> {data.paymentDate}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  {/* Right: Logo, Company Info & Invoice Details */}
+  <div className="col-md-6 text-end">
+    {data.companyLogo && (
+      <div className="mb-2">
+        <img src={data.companyLogo} alt="Company Logo" style={{ maxWidth: '100px' }} />
+      </div>
+    )}
+    {/* Company Info */}
+    <div className="mb-4">
+      <h2 className="mb-1 company-title">{data.companyName}</h2>
+      <p className="mb-1">{data.companyAddress}</p>
+      <p className="mb-0">Phone: {data.companyPhone}</p>
+    </div>
+    
+    {/* Invoice Details */}
+    <div>
+      <h5 className="fw-bold mb-3 invoice-title">Invoice Details</h5>
+      <p className="mb-2"><strong>Invoice#:</strong> {data.invoiceNumber}</p>
+      <p className="mb-2"><strong>Invoice Date:</strong> {data.invoiceDate}</p>
+      <p className="mb-0"><strong>Due Date:</strong> {data.paymentDate}</p>
+    </div>
 
-        <hr className="my-3 orange-border" />
+  </div>
+</div>
+
+<hr className="my-3 orange-border" />
+
 
         {/*Billing Section */}
         <div className="row g-3 mb-4">

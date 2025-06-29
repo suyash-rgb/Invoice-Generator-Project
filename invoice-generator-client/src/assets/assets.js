@@ -7,6 +7,10 @@ import template3 from './template3.png'
 import template4 from './template4.png'
 import template5 from './template5.png'
 import template6 from './template6.png'
+import features1 from './features1.png'
+import features2 from './features2.png'
+import features3 from './features3.png'
+import features4 from './features4.png'
 
 export const assets = {
    template1,
@@ -16,7 +20,11 @@ export const assets = {
    template5,
    template6,
    logo,
-   upload_area
+   upload_area,
+   features1,
+   features2,
+   features3,
+   features4,
 }
 
 export const templates =[

@@ -1,90 +1,70 @@
-import React from "react";
-import "./Features.css"; // Ensure you style this section properly
+import './Features.css';
+import { assets } from "../assets/assets"; // adjust the path based on file structure
+
+const featuresData = [
+  {
+    title: "Easy to Fill Invoice Details",
+    description: "Quickly enter invoice details without hassle. No complex fields—just straightforward invoicing.",
+    image: assets.features1,
+    imageLeft: true
+  },
+  {
+    title: "Sleek Dashboard",
+    description: "Your dashboard provides a clear overview of your saved invoices, each displayed with a handy thumbnail preview. Quickly revisit previous invoices, reuse them, or continue editing drafts—all in one elegant workspace.",
+    image: assets.features2,
+    imageLeft: false
+  },
+  {
+    title: "Invoice Preview with Action Buttons",
+    description: "Instantly visualize your invoice as you fill it out with our real-time preview pane. Seamlessly switch between drafts and take action with a single click—Save, Download, or Delete invoices without leaving the page.",
+    image: assets.features3,
+    imageLeft: true
+  },
+  {
+    title: "Send via Email in a Click",
+    description: "Send invoices to clients directly through QuickInvoice using Brevo SMTP integration.",
+    image: assets.features4,
+    imageLeft: false
+  }
+];
 
 const Features = () => {
   return (
-    <section id="features" className="py-5">
+    <section id="features" className="py-5 bg-light">
       <div className="container">
         <h2 className="text-center mb-5 display-5 fw-bold">Why Choose QuickInvoice?</h2>
 
-        <div className="row g-4 justify-content-center">
-          {/* Feature 1 - Easy to Fill Invoice Details */}
-          <div className="col-md-6 col-lg-3 d-flex">
-            <div className="card h-100 shadow-sm border-0 text-center flex-fill">
-              <div className="card-img-top-container d-flex align-items-center justify-content-center">
+        {featuresData.map((feature, index) => (
+          <div
+            key={index}
+            className="row align-items-center mb-5"
+          >
+            {feature.imageLeft && (
+              <div className="col-md-6 text-center mb-4 mb-md-0">
                 <img
-                  src="/assets/easy-fill.png" /* Adjust path if needed */
-                  className="rounded-circle"
-                  alt="Easy to Fill Invoice Details"
+                  src={feature.image}
+                  className="img-fluid rounded feature-image"
+                  alt={feature.title}
                 />
               </div>
-              <div className="card-body p-4">
-                <h5 className="card-title fw-bold mb-2 fs-5">Easy to Fill Invoice Details</h5>
-                <p className="card-text text-muted small">
-                  Quickly enter invoice details without hassle. No complex fields—just straightforward invoicing.
-                </p>
-              </div>
-            </div>
-          </div>
+            )}
 
-          {/* Feature 2 - Curated List of Templates */}
-          <div className="col-md-6 col-lg-3 d-flex">
-            <div className="card h-100 shadow-sm border-0 text-center flex-fill">
-              <div className="card-img-top-container d-flex align-items-center justify-content-center">
+            <div className="col-md-6">
+              <h4 className="fw-bold">{feature.title}</h4>
+              <p className="text-muted">{feature.description}</p>
+            </div>
+
+            {!feature.imageLeft && (
+              <div className="col-md-6 text-center mt-4 mt-md-0">
                 <img
-                  src="/assets/templates.png"
-                  className="rounded-circle"
-                  alt="Curated List of Templates"
+                  src={feature.image}
+                  className="img-fluid rounded feature-image"
+                  alt={feature.title}
                 />
               </div>
-              <div className="card-body p-4">
-                <h5 className="card-title fw-bold mb-2 fs-5">Curated List of Templates</h5>
-                <p className="card-text text-muted small">
-                  Access a variety of professionally designed invoice templates to suit your needs.
-                </p>
-              </div>
-            </div>
+            )}
           </div>
-
-          {/* Feature 3 - Add Logo & Details */}
-          <div className="col-md-6 col-lg-3 d-flex">
-            <div className="card h-100 shadow-sm border-0 text-center flex-fill">
-              <div className="card-img-top-container d-flex align-items-center justify-content-center">
-                <img
-                  src="/assets/add-logo.png"
-                  className="rounded-circle"
-                  alt="Add Your Logo & Invoice Details"
-                />
-              </div>
-              <div className="card-body p-4">
-                <h5 className="card-title fw-bold mb-2 fs-5">Add Your Logo & Invoice Details</h5>
-                <p className="card-text text-muted small">
-                  Personalize your invoices by adding a company logo and essential details effortlessly.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 4 - Tailor Fields to Your Needs */}
-          <div className="col-md-6 col-lg-3 d-flex">
-            <div className="card h-100 shadow-sm border-0 text-center flex-fill">
-              <div className="card-img-top-container d-flex align-items-center justify-content-center">
-                <img
-                  src="/assets/custom-fields.png"
-                  className="rounded-circle"
-                  alt="Tailor Fields to Your Needs"
-                />
-              </div>
-              <div className="card-body p-4">
-                <h5 className="card-title fw-bold mb-2 fs-5">Tailor Fields to Your Needs</h5>
-                <p className="card-text text-muted small">
-                  Customize invoice fields to align with your business requirements—total flexibility.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        ))}
       </div>
     </section>
   );
