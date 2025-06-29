@@ -3,6 +3,7 @@ package com.suyash.invoicegeneratorapi.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.suyash.invoicegeneratorapi.entity.Invoice;
 import com.suyash.invoicegeneratorapi.service.EmailService;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,14 +42,17 @@ public class InvoiceController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Invoice>> fetchInvoices() {
-        return ResponseEntity.ok(invoiceService.fetchInvoices());
+    public ResponseEntity<List<Invoice>> fetchInvoices(Authentication authentication) {
+        return ResponseEntity.ok(invoiceService.fetchInvoices(authentication.getName()));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removeInvoice(@PathVariable String id){
-        invoiceService.removeInvoice(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> removeInvoice(@PathVariable String id, Authentication authentication){
+        if(authentication.getName()!=null){
+            invoiceService.removeInvoice(id, authentication.getName());
+            return ResponseEntity.noContent().build();
+        }
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User does not have permission to acces this resource");
     }
 
     @PostMapping("/sendInvoice")  

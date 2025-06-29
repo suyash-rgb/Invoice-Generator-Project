@@ -20,6 +20,8 @@ public class Invoice {
     @Id
     private String id;
 
+    private String clerkId;
+
     private Company company;
 
     private Shipping shipping;
