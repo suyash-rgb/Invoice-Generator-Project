@@ -1,5 +1,51 @@
 # QuickInvoice
 
+## Project Overview
+
+**QuickInvoice** is a lightweight, customizable invoice generation platform built for freelancers and small businesses. It allows users to create, preview, and deliver professional invoices effortlessly—all within a clean and modern UI. With real-time previews, branded templates, and integrated email delivery, QuickInvoice helps users save time and get paid faster.
+
+---
+
+## Features
+
+- 🔒 **Secure Authentication** via Clerk (magic link, OAuth-ready)
+- 🧾 **Real-Time Invoice Preview** while editing
+- 🎨 **Curated Template Gallery** with multiple styles
+- ☁️ **Logo Upload Support** via Cloudinary integration
+- 📤 **One-Click Email Sending** using Brevo SMTP
+- 📥 **Download as PDF** or save invoices for later reuse
+- 🧠 **Smart History** with dashboard previews of saved invoices
+
+## Technologies Used
+
+### 🖥️ Frontend
+
+- **React** – Component-based UI development
+- **Vite** – Fast build tool and development server
+- **Bootstrap 5** – Responsive layout and styling system
+- **React Router DOM** – Client-side routing for navigating between views
+- **Lucide Icons** – Lightweight, customizable icon library
+- **Context API** – State management across components
+- **EmailJS / Brevo Client** – Email delivery helpers (front-facing integration)
+- **html2pdf.js** – Export invoice previews to downloadable PDFs
+
+### ⚙️ Backend
+
+- **Java & Spring Boot** – RESTful APIs and server-side logic
+- **Jakarta Mail API** – Email delivery through Brevo SMTP
+- **MongoDB** – NoSQL database for storing invoice data per user
+- **Clerk Webhooks** – Account event handling (planned for lifecycle support)
+- **CORS, Environment Variable Injection** – Config security and runtime flexibility
+
+### 🧩 Infrastructure & Dev Tools
+
+- **Cloudinary** – Handles company logo uploads and CDN delivery
+- **Clerk** – Complete auth suite (signup, sessions, secure JWT)
+- **Brevo SMTP** – Authenticated transactional email sending
+- **Visual Studio Code** – Dev environment
+- **Postman** – API testing and debugging
+
+
 ## Third-Party Integrations
 
 QuickInvoice integrates several trusted third-party services to deliver a seamless and scalable experience:
