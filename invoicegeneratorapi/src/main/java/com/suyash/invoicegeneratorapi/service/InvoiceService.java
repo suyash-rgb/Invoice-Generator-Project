@@ -13,9 +13,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InvoiceService {
 
-    private final InvoiceRepository invoiceRepository;
+    private final InvoiceRepository invoiceRepository; 
 
     public Invoice saveInvoice(Invoice invoice){
+        //log.info("Saving invoice: {}", invoice);
         return invoiceRepository.save(invoice);
     }
 
