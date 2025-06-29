@@ -1,5 +1,25 @@
 # QuickInvoice
 
+## Third-Party Integrations
+
+QuickInvoice integrates several trusted third-party services to deliver a seamless and scalable experience:
+
+### 🔐 Clerk – Authentication & User Management
+- Provides secure user sign-up, sign-in, and session handling.
+- Supports multiple authentication methods including OAuth and email/password.
+- Enables account lifecycle event tracking via webhooks.
+
+### ☁️ Cloudinary – Logo & Media Uploads
+- Handles image uploads (e.g., company logos) with CDN-optimized delivery.
+- Offloads storage and ensures fast rendering in invoice previews and PDFs.
+
+### ✉️ Brevo SMTP – Email Delivery
+- Sends invoices directly to client inboxes using SMTP relay.
+- Supports personalized email templates and attachments.
+- Credentials are injected securely via environment variables.
+
+These services allow QuickInvoice to focus on invoice generation while outsourcing authentication, media handling, and email infrastructure to battle-tested providers.
+
 ## Installation
 
 To install and run the QuickInvoice application, follow these steps:
