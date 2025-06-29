@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.math.BigInteger;
+import java.net.URI;
 import java.net.URL;
 import java.security.KeyFactory;
 import java.security.PublicKey;
@@ -38,7 +39,7 @@ public class ClerkJwksProvider {
 
     private void refreshKeys() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jwks = mapper.readTree(new URL(jwksUrl));
+        JsonNode jwks = mapper.readTree(new URI(jwksUrl).toURL());
 
         JsonNode keys = jwks.get("keys");
         for(JsonNode keyNode: keys){

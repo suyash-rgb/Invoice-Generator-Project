@@ -2,7 +2,7 @@ package com.suyash.invoicegeneratorapi.config;
 
 import java.util.List;
 
-import org.apache.catalina.filters.CorsFilter;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -32,7 +32,7 @@ public class SecurityConfig {
 
         httpSecurity.cors(Customizer.withDefaults())
                     .csrf(AbstractHttpConfigurer::disable)
-                    .authorizeHttpRequests(auth -> auth.requestMatchers("/api/webhooks/**").permitAll().anyRequest().authenticated())
+                    .authorizeHttpRequests(auth -> auth.requestMatchers("/api/webhooks/**", "/api/users").permitAll().anyRequest().authenticated())
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
                     return httpSecurity.build();

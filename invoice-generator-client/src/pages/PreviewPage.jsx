@@ -1,15 +1,15 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { templates } from '../assets/assets';
 import { AppContext } from '../context/AppContext';
 import InvoicePreview from '../components/InvoicePreview';
 import { deleteInvoice, saveInvoice, sendInvoice } from '../service/InvoiceService';
 import { Loader2 } from 'lucide-react';
-// import { baseUrl } from '/src/context/AppContext.jsx';
 import { toast } from 'react-hot-toast';
 import html2canvas from 'html2canvas'
 import { uploadInvoiceThumbnail } from '../service/cloudinaryService';
 import { generatePdfFromElement } from '../util/pdfUtils';
+import { useAuth, useUser } from '@clerk/clerk-react';
 
 const PreviewPage = () => {
   const previewRef = useRef();
@@ -20,7 +20,9 @@ const PreviewPage = () => {
   const [showModal, setShowModal ] = useState(false);
   const [customerEmail, setCustomerEmail] = useState("");
   const [emailing, setEmailing] = useState(false);
-
+  const { getToken } = useAuth();
+  const {user} = useUser();
+ 
 
   const handleSaveAndExit = async () => {
      try{
@@ -37,10 +39,12 @@ const PreviewPage = () => {
 
         const payload = {
           ...invoiceData,
+          clerkId: user.id,  
           thumbnailUrl: thumbnailUrl,
           template : selectedTemplate,
         }
-        const response = await saveInvoice(baseUrl, payload);
+        const token = await getToken();
+        const response = await saveInvoice(baseUrl, payload, token);
         console.log(response.status);
         if(response.status === 200){
            console.log("Saving invoice with values: ", payload);
@@ -62,7 +66,8 @@ const PreviewPage = () => {
   const handleDelete = async () => {
     
     try{
-      const response = await deleteInvoice(baseUrl, invoiceData.id);
+      const token = await getToken();
+      const response = await deleteInvoice(baseUrl, invoiceData.id, token);
       if(response.status === 204){
         toast.success("Invoice deleted successfully");
         navigate('/dashboard');
@@ -97,8 +102,8 @@ const PreviewPage = () => {
         const formData = new FormData();
         formData.append("file", pdfBlob, `invoice${Date.now()}.pdf`);
         formData.append("email", customerEmail);
-
-        const response = await sendInvoice(baseUrl, formData);
+        const token = await getToken();
+        const response = await sendInvoice(baseUrl, formData, token);
         if(response.status === 200){
           toast.success("Email sent successfully");
           setShowModal(false);
@@ -112,6 +117,13 @@ const PreviewPage = () => {
       setEmailing(false);
     }
   }
+
+  useEffect(() => {
+    if (!invoiceData|| !invoiceData.items?.length){
+      toast.error("invoice data is empty");
+      navigate("/dashboard");
+    }
+  }, [invoiceData, navigate]);
 
   return (
     <div className="previewpage container-fluid d-flex flex-column p-3 min-vh-100">

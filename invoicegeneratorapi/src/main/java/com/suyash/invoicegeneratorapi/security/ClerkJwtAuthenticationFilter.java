@@ -8,13 +8,14 @@ import java.util.Collections;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.springframework.lang.NonNull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,9 +35,9 @@ public class ClerkJwtAuthenticationFilter extends OncePerRequestFilter{
     private final ClerkJwksProvider jwksProvider;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, 
-                                    HttpServletResponse response, 
-                                    FilterChain filterChain)
+    protected void doFilterInternal(@NonNull HttpServletRequest request, 
+                                    @NonNull HttpServletResponse response, 
+                                    @NonNull FilterChain filterChain)
                                 throws ServletException, IOException {
 
         
@@ -48,7 +49,7 @@ public class ClerkJwtAuthenticationFilter extends OncePerRequestFilter{
 
         String authHeader = request.getHeader("Authorization");
 
-        if(authHeader==null || authHeader.startsWith("Bearer ")){
+        if(authHeader==null || !authHeader.startsWith("Bearer ")){
             response.sendError(HttpServletResponse.SC_FORBIDDEN, "Authorization header is missing or invalid");
             return;
         }
@@ -73,17 +74,26 @@ public class ClerkJwtAuthenticationFilter extends OncePerRequestFilter{
                                 .getBody();
             
             String clerkUserId = claims.getSubject();
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(clerkUserId, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")));
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                clerkUserId, 
+                null, 
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"))
+            );
+
+            // ✅ Set the authentication into the SecurityContext
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+            System.out.println("Auth header: " + authHeader);
+            System.out.println("Token: " + token);
+            System.out.println("Claims: " + claims);
+
+            //continue processing
             filterChain.doFilter(request, response);
         } catch(Exception e){
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalis JWT token");
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid JWT token");
         }
 
-
-        //throw new UnsupportedOperationException("Unimplemented method 'doFilterInternal'");
-    }
-
-    
+    }  
 
 
 }
