@@ -27,7 +27,7 @@ public class UserController {
     public User createOrUpdateUser(@RequestBody User user, Authentication authentication){
         try{
             if(!authentication.getName().equals(user.getClerkId())){
-                throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User does not have permission to access this resource")
+                throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User does not have permission to access this resource");
             }
             return userService.saveOrUpdateUser(user);
         } catch (Exception e){
