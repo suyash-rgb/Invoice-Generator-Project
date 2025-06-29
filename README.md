@@ -8,7 +8,7 @@
 
 ## Features
 
-- 🔒 **Secure Authentication** via Clerk (magic link, OAuth-ready)
+- 🔒 **Secure Authentication** via Clerk (Gmail login)
 - 🧾 **Real-Time Invoice Preview** while editing
 - 🎨 **Curated Template Gallery** with multiple styles
 - ☁️ **Logo Upload Support** via Cloudinary integration
