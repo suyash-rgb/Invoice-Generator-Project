@@ -68,7 +68,36 @@ These services allow QuickInvoice to focus on invoice generation while outsourci
 
 ## Installation
 
-To install and run the QuickInvoice application, follow these steps:
+To install and run the QuickInvoice application locally, follow these steps:
+
+---
+
+### 🛠 Backend Setup
+
+1. Clone the backend repository:
+   ```bash
+   git clone https://github.com/your-username/invoice-generator-api.git
+   ```
+
+2. Navigate to the backend project directory:
+   ```bash
+   cd invoice-generator-api
+   ```
+
+3. Configure your environment variables:
+Create a .env file or set the following environment variables in your terminal (example for PowerShell):
+   ```bash
+   $env:BREVO_USERNAME = "your@email.com"
+   $env:BREVO_PASSWORD = "your_smtp_api_key"
+   $env:MONGO_URI = "your_mongodb_connection_string"
+   ```
+
+4. Build and run the Spring Boot app:
+   ```bash
+   mvn spring-boot:run
+   ```
+
+### 🎨 Frontend Setup
 
 1. Clone the repository:
 ```
