@@ -3,8 +3,24 @@ import './LandingPage.css';
 import Features from '../../components/Features';
 import Logo from '../../components/Logo';
 import { Twitter, Facebook, Linkedin, Heart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { useUser } from '@clerk/clerk-react';
+
 
 const LandingPage = () => {
+
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
+
+  const handleGenerateClick = () => {
+    if(isSignedIn){
+      navigate('generate')
+    } else {
+      toast.error("Please sign in to generate invoices: ");
+    }
+  }
+
   return (
      <>
        {/*Hero Section: Full width, centered text with background image */}
@@ -20,7 +36,9 @@ const LandingPage = () => {
               </p>
               <p>
                 {/*Primary call to action */}
-                <button className="btn btn-lg btn-warning fw-bold rounded-pill">
+                <button className="btn btn-lg btn-warning fw-bold rounded-pill"
+                        onClick={handleGenerateClick}
+                >
                   Generate Your First Invoice
                 </button>
                 <span style={{ margin:'10px'}}></span>
@@ -145,7 +163,9 @@ const LandingPage = () => {
               Join thousands of freelancers and small businesses who trust QuickInvoice.
               Start creating professional invoices today – it's fast, easy, and effective!
             </p>
-            <button className="btn btn-lg btn-warning fw-bold rounded-pill">
+            <button className="btn btn-lg btn-warning fw-bold rounded-pill"
+                    onClick={handleGenerateClick}
+            >
               Start Generating Invoices Now
             </button>
             <p className="text-muted mt-2">(This will lead to the invoice generation interface)</p>
