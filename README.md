@@ -127,8 +127,9 @@ Before installing and running QuickInvoice, ensure you have the following tools 
   [MongoDB Download](https://www.mongodb.com/try/download/community)  
   [Compass GUI](https://www.mongodb.com/products/compass)
 
-> When deploying to production, you can switch to a cloud-based cluster using **MongoDB Atlas**.
+> When deploying to production, you can switch to a cloud-based cluster using **MongoDB Atlas**. 
 
+<br>
 ## Installation
 
 To install and run the QuickInvoice application locally, follow these steps:
