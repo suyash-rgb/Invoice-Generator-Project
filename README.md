@@ -125,7 +125,7 @@ To install and run the QuickInvoice application locally, follow these steps:
 
 2. Navigate to the backend project directory:
    ```bash
-   cd invoice-generator-api
+   cd invoicegeneratorapi
    ```
 
 3. Configure your environment variables:
@@ -145,7 +145,7 @@ Create a .env file or set the following environment variables in your terminal (
 
 1. Clone the repository:
 ```
-git clone https://github.com/your-username/invoice-generator-client.git
+git clone https://github.com/suyash-rgb/Invoice-Generator-Project.git
 ```
 
 2. Navigate to the project directory:
