@@ -19,6 +19,7 @@
   ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/13746b3a20272e5a19f0712d0b38132ae4ee86fd/images/sendEmail.png)
 - 📥 **Download as PDF** or save invoices for later reuse
 - 🧠 **Smart History** with dashboard previews of saved invoices
+  ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/652fc9799b995413c34141f23509944f0499d80b/invoice-generator-client/src/assets/features2.png)
 
 ## 📌 Importance of Invoicing Tools Across Modern Industrie
 
