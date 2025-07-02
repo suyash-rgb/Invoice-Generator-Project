@@ -56,7 +56,8 @@ Invoicing is not just about getting paid—it's about how you present yourself. 
 
 ![Langing Page1](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l1.png) <br><br>
 ![Langing Page2](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l2.png) <br><br>
-![Langing Page2](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l3.png) <br><br>
+![Langing Page3](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l3.png) <br><br>
+![Langing Page4](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/e0f8e17ab885ae480bf766881400126f6a930ccc/images/footer.png) <br><br>
 
 
 ## Technologies Used
