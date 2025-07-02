@@ -9,7 +9,8 @@
 ## Features
 
 - 🔒 **Secure Authentication** via Clerk (Gmail login)
-  ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/621632dc7fdec8ba906ac61922704112b0f7d7b3/invoice-generator-client/src/assets/features1.png)
+  ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/243a54a367c1a8322b4b30bbba26551f61d2dcc9/images/auth1.png)
+  ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/243a54a367c1a8322b4b30bbba26551f61d2dcc9/images/auth2.png)
 - 🧾 **Real-Time Invoice Preview** while editing
 - 🎨 **Curated Template Gallery** with multiple styles
   ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/621632dc7fdec8ba906ac61922704112b0f7d7b3/invoice-generator-client/src/assets/features1.png)
