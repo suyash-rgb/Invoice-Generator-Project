@@ -110,6 +110,25 @@ QuickInvoice integrates some trusted third-party services to deliver a seamless 
 
 These services allow QuickInvoice to focus on invoice generation while outsourcing authentication, media handling, and email infrastructure to battle-tested providers.
 
+## 🧰 Prerequisites
+
+Before installing and running QuickInvoice, ensure you have the following tools installed on your machine:
+
+### 🖥️ General
+- **Git** – For cloning repositories  
+  [Download Git](https://git-scm.com/)
+- **Node.js (v18 or above)** – Required for the React frontend  
+  [Download Node.js](https://nodejs.org/)
+- **Java 17+ & Maven** – Required to run the Spring Boot backend  
+  [Java](https://adoptium.net/) | [Maven](https://maven.apache.org/install.html)
+
+### 🗃️ Local Database
+- **MongoDB & MongoDB Compass** – For running and interacting with your local database  
+  [MongoDB Download](https://www.mongodb.com/try/download/community)  
+  [Compass GUI](https://www.mongodb.com/products/compass)
+
+> When deploying to production, you can switch to a cloud-based cluster using **MongoDB Atlas**.
+
 ## Installation
 
 To install and run the QuickInvoice application locally, follow these steps:
