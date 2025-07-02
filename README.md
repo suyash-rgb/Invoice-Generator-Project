@@ -52,24 +52,12 @@ QuickInvoice isn’t just a convenience tool—it’s a **critical solution** fo
 
 Invoicing is not just about getting paid—it's about how you present yourself. **QuickInvoice helps you look professional, stay organized, and get paid faster.**
 
-## 🖼️Interface Showcase
-Landing Page <br>
+## 🖼️Landing Page
+
 ![Langing Page1](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l1.png) <br><br>
 ![Langing Page2](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l2.png) <br><br>
 ![Langing Page2](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/90fcca54c869e9555a9a750fe48b9cea93dc625f/images/l3.png) <br><br>
-About Page <br>
-![About Page]() <br><br>
-Login Page <br>
-![Login Page]() <br><br>
-Register Page <br>
-![Register Page]() <br><br>
-Dasboard Layout <br>
-![Dasboard Layout1]() <br><br>
-Manage Links Section in Dashboard Layout <br>
-![Dasboard Layout2]() <br><br>
-URL Specific Analytics <br>
-![Alt text]() <br><br>
-![Alt text]() <br><br>
+
 
 ## Technologies Used
 
