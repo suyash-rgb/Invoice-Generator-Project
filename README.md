@@ -90,20 +90,20 @@ Invoicing is not just about getting paid—it's about how you present yourself. 
 - **Postman** – API testing and debugging
 
 
-## Third-Party Integrations
+## 🧩 Third-Party Integrations
 
-QuickInvoice integrates some trusted third-party services to deliver a seamless and scalable experience:
+QuickInvoice integrates trusted third-party services to deliver a seamless and scalable experience:
 
-### 🔐 Clerk – Authentication & User Management
+### 🔐 [Clerk – Authentication & User Management](https://clerk.com/)
 - Provides secure user sign-up, sign-in, and session handling.
 - Supports multiple authentication methods including OAuth and email/password.
 - Enables account lifecycle event tracking via webhooks.
 
-### ☁️ Cloudinary – Logo & Media Uploads
+### ☁️ [Cloudinary – Logo & Media Uploads](https://cloudinary.com/)
 - Handles image uploads (e.g., company logos) with CDN-optimized delivery.
 - Offloads storage and ensures fast rendering in invoice previews and PDFs.
 
-### ✉️ Brevo SMTP – Email Delivery
+### ✉️ [Brevo SMTP – Email Delivery](https://www.brevo.com/)
 - Sends invoices directly to client inboxes using SMTP relay.
 - Supports personalized email templates and attachments.
 - Credentials are injected securely via environment variables.
@@ -130,6 +130,7 @@ Before installing and running QuickInvoice, ensure you have the following tools 
 > When deploying to production, you can switch to a cloud-based cluster using **MongoDB Atlas**. 
 
 <br>
+
 ## Installation
 
 To install and run the QuickInvoice application locally, follow these steps:
