@@ -120,7 +120,7 @@ To install and run the QuickInvoice application locally, follow these steps:
 
 1. Clone the backend repository:
    ```bash
-   git clone https://github.com/your-username/invoice-generator-api.git
+   git clone https://github.com/suyash-rgb/Invoice-Generator-Project.git
    ```
 
 2. Navigate to the backend project directory:
