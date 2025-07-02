@@ -48,7 +48,7 @@
 
 ## Third-Party Integrations
 
-QuickInvoice integrates several trusted third-party services to deliver a seamless and scalable experience:
+QuickInvoice integrates some trusted third-party services to deliver a seamless and scalable experience:
 
 ### 🔐 Clerk – Authentication & User Management
 - Provides secure user sign-up, sign-in, and session handling.
