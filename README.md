@@ -14,6 +14,7 @@
   ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/621632dc7fdec8ba906ac61922704112b0f7d7b3/invoice-generator-client/src/assets/features1.png)
 - ☁️ **Logo Upload Support** via Cloudinary integration
 - 📤 **One-Click Email Sending** using Brevo SMTP
+  ![Alt text](https://github.com/suyash-rgb/Invoice-Generator-Project/blob/621632dc7fdec8ba906ac61922704112b0f7d7b3/invoice-generator-client/src/assets/features1.png)
 - 📥 **Download as PDF** or save invoices for later reuse
 - 🧠 **Smart History** with dashboard previews of saved invoices
 
