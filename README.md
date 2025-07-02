@@ -205,16 +205,6 @@ If you'd like to contribute to the QuickInvoice project, please follow these ste
 4. Push your changes to your forked repository.
 5. Submit a pull request to the main repository.
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-## Testing
-
-To run the tests for the QuickInvoice application, use the following command:
-
-```
-npm run test
-```
-
-This will execute the test suite and report the results.
+## Contact
+For any inquiries, please reach out to [Suyash Baoney](mailto:suyashbaoney58@gmail.com).
