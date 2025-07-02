@@ -1,7 +1,7 @@
 # QuickInvoice
 
 ## Project Overview
-
+![Alt text]()
 **QuickInvoice** is a lightweight, customizable invoice generation platform built for freelancers and small businesses. It allows users to create, preview, and deliver professional invoices effortlessly—all within a clean and modern UI. With real-time previews, branded templates, and integrated email delivery, QuickInvoice helps users save time and get paid faster.
 
 ---
