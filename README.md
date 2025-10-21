@@ -90,25 +90,46 @@ Invoicing is not just about getting paid—it's about how you present yourself. 
 - **Postman** – API testing and debugging
 
 
-## Third-Party Integrations
+## 🧩 Third-Party Integrations
 
-QuickInvoice integrates some trusted third-party services to deliver a seamless and scalable experience:
+QuickInvoice integrates trusted third-party services to deliver a seamless and scalable experience:
 
-### 🔐 Clerk – Authentication & User Management
+### 🔐 [Clerk – Authentication & User Management](https://clerk.com/)
 - Provides secure user sign-up, sign-in, and session handling.
 - Supports multiple authentication methods including OAuth and email/password.
 - Enables account lifecycle event tracking via webhooks.
 
-### ☁️ Cloudinary – Logo & Media Uploads
+### ☁️ [Cloudinary – Logo & Media Uploads](https://cloudinary.com/)
 - Handles image uploads (e.g., company logos) with CDN-optimized delivery.
 - Offloads storage and ensures fast rendering in invoice previews and PDFs.
 
-### ✉️ Brevo SMTP – Email Delivery
+### ✉️ [Brevo SMTP – Email Delivery](https://www.brevo.com/)
 - Sends invoices directly to client inboxes using SMTP relay.
 - Supports personalized email templates and attachments.
 - Credentials are injected securely via environment variables.
 
 These services allow QuickInvoice to focus on invoice generation while outsourcing authentication, media handling, and email infrastructure to battle-tested providers.
+
+## 🧰 Prerequisites
+
+Before installing and running QuickInvoice, ensure you have the following tools installed on your machine:
+
+### 🖥️ General
+- **Git** – For cloning repositories  
+  [Download Git](https://git-scm.com/)
+- **Node.js (v18 or above)** – Required for the React frontend  
+  [Download Node.js](https://nodejs.org/)
+- **Java 17+ & Maven** – Required to run the Spring Boot backend  
+  [Java](https://adoptium.net/) | [Maven](https://maven.apache.org/install.html)
+
+### 🗃️ Local Database
+- **MongoDB & MongoDB Compass** – For running and interacting with your local database  
+  [MongoDB Download](https://www.mongodb.com/try/download/community)  
+  [Compass GUI](https://www.mongodb.com/products/compass)
+
+> When deploying to production, you can switch to a cloud-based cluster using **MongoDB Atlas**. 
+
+<br>
 
 ## Installation
 
